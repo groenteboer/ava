@@ -27,9 +27,5 @@ install: |
     npm install --no-shrinkwrap --prefer-online;
   else
     npm install --prefer-offline;
-    if ! md5sum --quiet -c package-lock.json.md5; then
-      echo "package-lock.json was modified unexpectedly. Please rebuild it using npm@$(npm -v) and commit the changes.";
-      exit 1;
-    fi
   fi
 after_success: npx codecov --file=./coverage/lcov.info
